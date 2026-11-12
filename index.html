@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <meta name="description" content="A calm study timer and revision planner to help students focus, take breaks, and plan their next study step." />
+    <title>Study Flow — Timer & Revision Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#home" aria-label="Study Flow home"><span class="brand-icon" aria-hidden="true">sf</span><span><small>Student tools</small><strong>Study Flow</strong></span></a>
+        <a class="top-link" href="#planner">Revision planner <span aria-hidden="true">↘</span></a>
+      </div>
+    </header>
+
+    <main id="home" class="container">
+      <section class="intro">
+        <div><p class="eyebrow">A little progress adds up</p><h1>Make focus feel <span>possible.</span></h1><p class="intro-copy">Choose one subject, start a session, and take your next step at your own pace.</p></div>
+        <div class="date-card"><span aria-hidden="true">☀</span><div><strong id="today-label">Today</strong><small>One thing at a time.</small></div></div>
+      </section>
+
+      <section class="dashboard" aria-label="Today's study dashboard">
+        <div class="panel timer-panel" aria-labelledby="timer-heading">
+          <div class="panel-heading"><div><p class="eyebrow">Focus room</p><h2 id="timer-heading">Study timer</h2></div><span id="timer-mode" class="mode-pill">Focus session</span></div>
+          <label class="field subject-field" for="subject"><span>What are you studying?</span><input id="subject" maxlength="60" placeholder="Choose a subject or topic" /></label>
+          <div class="timer-circle" id="timer-display" role="timer" aria-label="25 minutes remaining"><span id="timer-time">25:00</span><small id="timer-caption">Ready when you are</small></div>
+          <div class="timer-settings" aria-label="Timer durations">
+            <label class="field" for="focus-duration"><span>Focus (min)</span><input id="focus-duration" type="number" min="1" max="180" value="25" /></label>
+            <label class="field" for="break-duration"><span>Break (min)</span><input id="break-duration" type="number" min="1" max="60" value="5" /></label>
+          </div>
+          <div class="timer-actions"><button id="start-button" class="button primary" type="button">Start focus</button><button id="reset-button" class="button secondary" type="button">Reset</button></div>
+          <p id="timer-message" class="status-message" role="status" aria-live="polite">Your settings are saved on this device.</p>
+        </div>
+
+        <aside class="panel progress-panel" aria-labelledby="progress-heading">
+          <div class="panel-heading"><div><p class="eyebrow">Small wins count</p><h2 id="progress-heading">Today’s progress</h2></div><span class="sparkle" aria-hidden="true">✦</span></div>
+          <div class="progress-number"><strong id="session-count">0</strong><span>focus sessions</span></div>
+          <div class="progress-track" role="progressbar" aria-label="Daily focus goal" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><span id="progress-fill"></span></div>
+          <p id="goal-copy" class="muted">A gentle goal: 4 sessions today.</p>
+          <div class="minutes-card"><span class="minutes-icon" aria-hidden="true">◷</span><div><strong id="minutes-count">0 min</strong><small>focused today</small></div></div>
+          <div class="encouragement"><span aria-hidden="true">✧</span><p>Rest is part of learning. Take breaks without guilt.</p></div>
+          <button id="clear-progress" class="text-button" type="button">Reset today’s progress</button>
+        </aside>
+      </section>
+
+      <section id="planner" class="panel planner-panel" aria-labelledby="planner-heading">
+        <div class="panel-heading planner-heading"><div><p class="eyebrow">Plan a next step</p><h2 id="planner-heading">Revision planner</h2><p class="muted">Keep a short list of what you want to review.</p></div><span class="planner-icon" aria-hidden="true">✓</span></div>
+        <form id="task-form" class="task-form">
+          <label class="field task-input" for="task-title"><span>Revision task</span><input id="task-title" maxlength="120" required placeholder="e.g. Review photosynthesis notes" /></label>
+          <label class="field task-subject" for="task-subject"><span>Subject <span class="optional">(optional)</span></span><input id="task-subject" maxlength="60" placeholder="Biology" /></label>
+          <button class="button primary add-button" type="submit">Add task <span aria-hidden="true">＋</span></button>
+        </form>
+        <div class="task-toolbar"><p id="task-summary" class="muted" aria-live="polite">No tasks yet.</p><button id="clear-completed" class="text-button" type="button">Clear completed</button></div>
+        <ul id="task-list" class="task-list" aria-label="Revision tasks"></ul>
+        <p id="task-empty" class="empty-state">Start with one small revision task. You can change your plan whenever you need.</p>
+      </section>
+      <p class="privacy-footnote">Your tasks and progress are stored only in this browser on this device. No account needed.</p>
+    </main>
+
+    <footer><div class="container footer-inner"><span>Study Flow</span><span>Build a routine that works for you.</span></div></footer>
+  </body>
+</html>
